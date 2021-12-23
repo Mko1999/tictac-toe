@@ -3,52 +3,33 @@ const backdrop = document.querySelector(".backdrop");
 const form = document.querySelector(".form");
 const outputError = document.querySelector(".config-errors");
 const cancelConfigBtn = document.getElementById("cancel-config-btn");
-
+const inputField = document.querySelector(".name-field");
 const editPlayer1 = document.querySelector(".btn-edit");
 const editPlayer2 = document.querySelector(".btn-edit-second");
+const startNewGame = document.querySelector(".start-game-btn");
+const gameArea = document.querySelector(".active-game");
+const gameFieldElements = document.querySelectorAll(".game-board li");
+const gameBoardElement = document.querySelector(".game-board");
+const activePlayerName = document.querySelector(".active-player-name");
+const gameOver = document.querySelector(".game-over");
+const winName = document.querySelector(".winner-name");
+const gameData = [
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+];
 
 let editedPlayer = 0;
-
-editPlayer1.addEventListener("click", (event) => {
-  editedPlayer = +event.target.dataset.playerid;
-
-  playerConfigOverlay.style.display = "block";
-  backdrop.style.display = "block";
-});
-
-editPlayer2.addEventListener("click", (event) => {
-  editedPlayer = +event.target.dataset.playerid;
-  console.log(editedPlayer);
-  playerConfigOverlay.style.display = "block";
-  backdrop.style.display = "block";
-});
-
-cancelConfigBtn.addEventListener("click", () => {
-  playerConfigOverlay.style.display = "none";
-  backdrop.style.display = "none";
-  form.firstElementChild.classList.remove("error");
-  outputError.textContent = "";
-});
-
-backdrop.addEventListener("click", () => {
-  playerConfigOverlay.style.display = "none";
-  backdrop.style.display = "none";
-  form.firstElementChild.classList.remove("error");
-  outputError.textContent = "";
-});
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  console.log(event);
-  const formData = new FormData(event.target);
-  console.log(formData);
-  const enteredPlayername = formData.get("username").trim(); // "    max     " =>"max"
-  console.log(enteredPlayername);
-
-  if (!enteredPlayername) {
-    // checking input validation
-    event.target.firstElementChild.classList.add("error");
-    outputError.textContent = "Please enter a valid name";
-    return;
-  }
-});
+let activePlayer = 0;
+let currentRound = 1;
+let gameIsOver = false;
+const players = [
+  {
+    name: "",
+    symbol: "X",
+  },
+  {
+    name: "",
+    symbol: "0",
+  },
+];

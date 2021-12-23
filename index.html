@@ -27,7 +27,12 @@
         <form class="form">
           <div class="form-control">
             <label for="playername">Player Name</label>
-            <input type="text" name="username" id="playername" />
+            <input
+              type="text"
+              name="username"
+              class="name-field"
+              id="playername"
+            />
           </div>
           <p class="config-errors"></p>
           <div>
@@ -41,7 +46,7 @@
       <section class="game-configuration">
         <ol>
           <li>
-            <article>
+            <article class="player-1-data">
               <h2>Player 1</h2>
               <h3>Player Name</h3>
               <p class="player-symbol">X</p>
@@ -55,7 +60,7 @@
             </article>
           </li>
           <li>
-            <article>
+            <article class="player-2-data">
               <h2>Player 2</h2>
               <h3>Player Name</h3>
               <p class="player-symbol">0</p>
@@ -69,28 +74,26 @@
             </article>
           </li>
         </ol>
-        <button class="btn">Start New Game</button>
+        <button class="btn start-game-btn">Start New Game</button>
       </section>
       <section class="active-game">
         <article class="game-over">
-          <h2>You won!<span class="winner-name"></span></h2>
+          <h2 id="h2">You won!<span class="winner-name">Player NAme</span></h2>
           <p>Click "Start New Game" above to start a new game</p>
         </article>
-        <p>
-          It is Your turn <span class="active-player-name">PLAYER NAME</span>!
-        </p>
+        <p>It is Your turn <span class="active-player-name"></span>!</p>
         <ol class="game-board">
-          <li class="disabled">x</li>
-          <li></li>
-          <li class="disabled">0</li>
+          <li data-col="1" data-row="1"></li>
+          <li data-col="2" data-row="1"></li>
+          <li data-col="3" data-row="1"></li>
 
-          <li></li>
-          <li class="disabled">X</li>
-          <li></li>
+          <li data-col="1" data-row="2"></li>
+          <li data-col="2" data-row="2"></li>
+          <li data-col="3" data-row="2"></li>
 
-          <li class="disabled">0</li>
-          <li></li>
-          <li></li>
+          <li data-col="1" data-row="3"></li>
+          <li data-col="2" data-row="3"></li>
+          <li data-col="3" data-row="3"></li>
         </ol>
       </section>
     </main>
